@@ -12,6 +12,7 @@ import "./ProviderHome.css";
 import { closeCircleOutline } from "ionicons/icons";
 import Header from "../components/Header";
 import { getProvider } from "../api";
+import { formatTime } from "../utils/formatTime";
 
 const ProviderHomePage: React.FC = () => {
   const provider = getProvider("fa115dad-92f6-4db5-99ac-87e04fa6e087")!;
@@ -25,7 +26,9 @@ const ProviderHomePage: React.FC = () => {
           {provider.availability.map((availability, i) => {
             return (
               <IonItem key={i}>
-                <IonLabel>{`${availability.date} ${availability.startTime} - ${availability.endTime}`}</IonLabel>
+                <IonLabel>{`${availability.date} ${formatTime(
+                  availability.startTime
+                )} - ${formatTime(availability.endTime)}`}</IonLabel>
                 <IonIcon slot="end" md={closeCircleOutline}></IonIcon>
               </IonItem>
             );

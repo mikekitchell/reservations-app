@@ -17,6 +17,7 @@ import TimePicker from "../components/TimePicker";
 import { isTimeBetween } from "../utils/isTimeBetween";
 import { v4 as uuidv4 } from "uuid";
 import { ProviderAvailability } from "../models/providerAvailability";
+import { formatTime } from "../utils/formatTime";
 
 const ScheduleReservationPage: React.FC = () => {
   const { providerId } = useParams<{ providerId: string }>();
@@ -100,7 +101,9 @@ const ScheduleReservationPage: React.FC = () => {
               <div key={i}>
                 <IonListHeader>{availability.date}</IonListHeader>
                 <IonItem>
-                  <IonLabel>{`${availability.startTime} - ${availability.endTime}`}</IonLabel>
+                  <IonLabel>{`${formatTime(
+                    availability.startTime
+                  )} - ${formatTime(availability.endTime)}`}</IonLabel>
                   <IonButton
                     slot="end"
                     onClick={() => {

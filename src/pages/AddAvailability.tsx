@@ -13,6 +13,7 @@ import TimePicker from "../components/TimePicker";
 import Header from "../components/Header";
 import { useParams } from "react-router";
 import { getProvider, updateProvider } from "../api";
+import { formatTime } from "../utils/formatTime";
 
 const AddAvailabilityPage: React.FC = () => {
   const { providerId } = useParams<{ providerId: string }>();
@@ -63,6 +64,7 @@ const AddAvailabilityPage: React.FC = () => {
       <Header title={"Dr. Zoidberg"} />
       <IonContent className="ion-padding">
         <IonDatetime
+          min={new Date().toISOString()}
           presentation="date"
           onIonChange={(e: any) => {
             setSelectedDate(e.target.value);
@@ -77,7 +79,7 @@ const AddAvailabilityPage: React.FC = () => {
               }}
               slot="end"
             >
-              {selectedStartTime}
+              {formatTime(selectedStartTime)}
             </IonButton>
           </IonItem>
           <IonItem>
@@ -88,7 +90,7 @@ const AddAvailabilityPage: React.FC = () => {
               }}
               slot="end"
             >
-              {selectedEndTime}
+              {formatTime(selectedEndTime)}
             </IonButton>
           </IonItem>
         </IonList>

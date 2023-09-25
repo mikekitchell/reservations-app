@@ -11,6 +11,7 @@ import "./ClientHome.css";
 import Header from "../components/Header";
 import { getAllProviders, getClient, updateClient } from "../api";
 import { ClientReservation } from "../models/clientReservation";
+import { formatTime } from "../utils/formatTime";
 
 interface ConfirmationButtonProps {
   reservation: ClientReservation;
@@ -22,7 +23,6 @@ const ConfirmationButton: React.FC<ConfirmationButtonProps> = ({
   onConfirmReservation,
 }) => {
   const confirmationIsExpired = (timeOfRequest: Date) => {
-    console.log(timeOfRequest);
     const currentTime = new Date();
     const timeDifference = timeOfRequest.getTime() - currentTime.getTime();
     const minutesDifference = Math.abs(timeDifference / (1000 * 60));
@@ -35,7 +35,8 @@ const ConfirmationButton: React.FC<ConfirmationButtonProps> = ({
 
   return (
     <div>
-      {confirmationIsExpired(new Date(reservation.timeOfRequest)) ? (
+      {confirmationIsExpired(new Date(reservation.timeOfRequest)) &&
+      !reservation.confirmed ? (
         <IonButton color="dark" fill="clear" disabled={true}>
           Expired
         </IonButton>
@@ -98,7 +99,7 @@ const ClientHomePage: React.FC = () => {
                 <IonLabel>
                   <h3>
                     {reservation.reservationDate} @{" "}
-                    {reservation.reservationTime}
+                    {formatTime(reservation.reservationTime)}
                   </h3>
                   <p>with {getProviderName(reservation.providerId)}</p>
                 </IonLabel>

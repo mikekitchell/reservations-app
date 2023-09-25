@@ -18,17 +18,17 @@ const setProviderData = () => {
       name: "Dr. Zoidberg",
       availability: [
         {
-          date: "Fri Sep 22 2023",
+          date: "Mon Oct 09 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
         {
-          date: "Mon Sep 25 2023",
+          date: "Tue Oct 10 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
         {
-          date: "Tue Sep 26 2023",
+          date: "Wed Oct 11 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
@@ -39,17 +39,17 @@ const setProviderData = () => {
       name: "Professor Farnsworth",
       availability: [
         {
-          date: "Fri Sep 22 2023",
+          date: "Mon Oct 09 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
         {
-          date: "Mon Sep 25 2023",
+          date: "Tue Oct 10 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
         {
-          date: "Tue Sep 26 2023",
+          date: "Wed Oct 11 2023",
           startTime: "08:00:00",
           endTime: "17:00:00",
         },
@@ -71,9 +71,19 @@ const setClientData = () => {
     reservations: [
       {
         reservationId: uuidv4(),
+        timeOfRequest: new Date(
+          "Sun Sep 24 2023 09:51:43 GMT-0500 (Central Daylight Time)"
+        ),
+        reservationDate: "Fri Sep 22 2023",
+        reservationTime: "13:30:00",
+        providerId: "fa115dad-92f6-4db5-99ac-87e04fa6e087",
+        confirmed: false,
+      },
+      {
+        reservationId: uuidv4(),
         timeOfRequest: new Date(),
-        reservationDate: "Fri Sep 22",
-        reservationTime: "12:25:00",
+        reservationDate: "Mon Oct 09 2023",
+        reservationTime: "12:15:00",
         providerId: "fa115dad-92f6-4db5-99ac-87e04fa6e087",
         confirmed: false,
       },

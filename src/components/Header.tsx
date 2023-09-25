@@ -5,6 +5,7 @@ import {
   IonButton,
   IonTitle,
 } from "@ionic/react";
+import React from "react";
 
 interface HeaderProps {
   title: string;
